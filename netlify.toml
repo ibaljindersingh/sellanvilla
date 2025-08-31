@@ -4,3 +4,7 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# This config uses Netlify’s official Next.js plugin to handle routing,
+# image optimisation and server-side rendering. The build output is
+# published from the `.next` directory.
