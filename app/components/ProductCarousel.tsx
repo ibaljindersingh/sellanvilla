@@ -15,9 +15,10 @@ interface Product {
 
 interface ProductCarouselProps {
   products?: Product[];
+  productLink?: string; // Base URL for product links
 }
 
-export default function ProductCarousel({ products = [] }: ProductCarouselProps) {
+export default function ProductCarousel({ products = [], productLink = '/shop?product=' }: ProductCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [carouselProducts, setCarouselProducts] = useState<Product[]>([]);
@@ -110,24 +111,59 @@ export default function ProductCarousel({ products = [] }: ProductCarouselProps)
   };
 
   const toggleAutoPlay = () => {
-    setIsAutoPlaying(!isAutoPlaying);
+    try {
+      setIsAutoPlaying(!isAutoPlaying);
+    } catch (error) {
+      console.error('Error toggling auto play:', error);
+    }
   };
 
-  // Don't render if no products
+  if (isLoading) {
+    return (
+      <div className="relative w-full h-96 bg-gray-200 rounded-lg overflow-hidden">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center">
+            <div className="w-8 h-8 border-4 border-primary-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+            <p className="text-gray-600">Loading products...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="relative w-full h-96 bg-gray-200 rounded-lg overflow-hidden">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center">
+            <p className="text-red-600 mb-4">{error}</p>
+            <button 
+              onClick={() => window.location.reload()} 
+              className="px-4 py-2 bg-primary-600 text-white rounded hover:bg-primary-700"
+            >
+              Retry
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (carouselProducts.length === 0) {
     return (
-      <div className="relative w-full h-96 md:h-[500px] overflow-hidden rounded-xl bg-gray-100 flex items-center justify-center">
-        <div className="text-center text-gray-500">
-          <div className="w-16 h-16 border-4 border-gray-300 border-t-primary-600 rounded-full animate-spin mx-auto mb-4"></div>
-          <p>Loading carousel...</p>
+      <div className="relative w-full h-96 bg-gray-200 rounded-lg overflow-hidden">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center">
+            <p className="text-gray-600">No products available</p>
+          </div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="relative w-full h-96 md:h-[500px] overflow-hidden rounded-xl">
-      {/* Carousel Images */}
+    <div className="relative w-full h-96 md:h-[500px] lg:h-[600px] overflow-hidden rounded-lg">
+      {/* Product Slides */}
       {carouselProducts.map((product, index) => (
         <div
           key={product.slug}
@@ -165,7 +201,7 @@ export default function ProductCarousel({ products = [] }: ProductCarouselProps)
                   {product.category}
                 </p>
                 <Link
-                  href={`/shop?product=${product.slug}`}
+                  href={`${productLink}${product.slug}`}
                   className="inline-block mt-4 px-6 py-3 rounded-full bg-primary-600 text-white font-semibold hover:bg-primary-700 transition-colors text-sm md:text-base"
                 >
                   View Details

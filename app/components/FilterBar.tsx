@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from 'react';
+import { useTranslations } from '../hooks/useTranslations';
+import { CONSTANTS } from '../constants';
 
 interface FilterBarProps {
   categories: string[];
@@ -27,6 +29,7 @@ export default function FilterBar({
   onPriceRangeChange,
   maxPrice
 }: FilterBarProps) {
+  const { t } = useTranslations();
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -42,7 +45,7 @@ export default function FilterBar({
                 try {
                   onCategoryChange(cat);
                 } catch (error) {
-                  console.error('Error changing category:', error);
+                  console.error(CONSTANTS.ERRORS.NETWORK.FETCH_FAILED, error);
                 }
               }}
               className={`px-4 py-2 rounded-full text-sm font-medium border transition-all duration-200 ${
@@ -61,14 +64,14 @@ export default function FilterBar({
           <div className="relative">
             <input
               type="text"
-              placeholder="Search products..."
+              placeholder={t('shop.searchProducts')}
               className="border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent w-full sm:w-64"
               value={searchTerm}
               onChange={(e) => {
                 try {
                   onSearchChange(e.target.value);
                 } catch (error) {
-                  console.error('Error updating search term:', error);
+                  console.error(CONSTANTS.ERRORS.NETWORK.FETCH_FAILED, error);
                 }
               }}
             />
@@ -93,15 +96,15 @@ export default function FilterBar({
               try {
                 onSortChange(e.target.value);
               } catch (error) {
-                console.error('Error changing sort:', error);
+                console.error(CONSTANTS.ERRORS.NETWORK.FETCH_FAILED, error);
               }
             }}
             className="border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white"
           >
-            <option value="name">Sort by Name</option>
-            <option value="price-low">Price: Low to High</option>
-            <option value="price-high">Price: High to Low</option>
-            <option value="category">Sort by Category</option>
+            <option value="name">{t('shop.sortByName')}</option>
+            <option value="price-low">{t('shop.sortByPriceLow')}</option>
+            <option value="price-high">{t('shop.sortByPriceHigh')}</option>
+            <option value="category">{t('shop.sortByCategory')}</option>
           </select>
         </div>
       </div>
@@ -112,7 +115,7 @@ export default function FilterBar({
           onClick={() => setIsExpanded(!isExpanded)}
           className="flex items-center text-sm text-primary-600 hover:text-primary-600/80 transition-colors"
         >
-          <span className="mr-2">Advanced Filters</span>
+          <span className="mr-2">{t('shop.advancedFilters')}</span>
           <svg
             className={`w-4 h-4 transition-transform duration-200 ${
               isExpanded ? 'rotate-180' : ''
@@ -136,7 +139,7 @@ export default function FilterBar({
             {/* Price Range Slider */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Price Range: ${priceRange[0]} - ${priceRange[1]}
+                {t('shop.priceRange')}: ${priceRange[0]} - ${priceRange[1]}
               </label>
               <div className="flex items-center space-x-4">
                 <input
@@ -148,7 +151,7 @@ export default function FilterBar({
                     try {
                       onPriceRangeChange([parseInt(e.target.value), priceRange[1]]);
                     } catch (error) {
-                      console.error('Error updating price range:', error);
+                      console.error(CONSTANTS.ERRORS.NETWORK.FETCH_FAILED, error);
                     }
                   }}
                   className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
@@ -162,7 +165,7 @@ export default function FilterBar({
                     try {
                       onPriceRangeChange([priceRange[0], parseInt(e.target.value)]);
                     } catch (error) {
-                      console.error('Error updating price range:', error);
+                      console.error(CONSTANTS.ERRORS.NETWORK.FETCH_FAILED, error);
                     }
                   }}
                   className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
@@ -177,48 +180,48 @@ export default function FilterBar({
                   try {
                     onPriceRangeChange([0, 25]);
                   } catch (error) {
-                    console.error('Error setting price range:', error);
+                    console.error(CONSTANTS.ERRORS.NETWORK.FETCH_FAILED, error);
                   }
                 }}
                 className="px-3 py-1 text-xs bg-gray-100 text-gray-700 rounded-full hover:bg-primary-600 hover:text-white transition-colors"
               >
-                Under $25
+                {t('shop.under25')}
               </button>
               <button
                 onClick={() => {
                   try {
                     onPriceRangeChange([25, 50]);
                   } catch (error) {
-                    console.error('Error setting price range:', error);
+                    console.error(CONSTANTS.ERRORS.NETWORK.FETCH_FAILED, error);
                   }
                 }}
                 className="px-3 py-1 text-xs bg-gray-100 text-gray-700 rounded-full hover:bg-primary-600 hover:text-white transition-colors"
               >
-                $25 - $50
+                {t('shop.priceRange25to50')}
               </button>
               <button
                 onClick={() => {
                   try {
                     onPriceRangeChange([50, 100]);
                   } catch (error) {
-                    console.error('Error setting price range:', error);
+                    console.error(CONSTANTS.ERRORS.NETWORK.FETCH_FAILED, error);
                   }
                 }}
                 className="px-3 py-1 text-xs bg-gray-100 text-gray-700 rounded-full hover:bg-primary-600 hover:text-white transition-colors"
               >
-                $50 - $100
+                {t('shop.priceRange50to100')}
               </button>
               <button
                 onClick={() => {
                   try {
                     onPriceRangeChange([100, maxPrice]);
                   } catch (error) {
-                    console.error('Error setting price range:', error);
+                    console.error(CONSTANTS.ERRORS.NETWORK.FETCH_FAILED, error);
                   }
                 }}
                 className="px-3 py-1 text-xs bg-gray-100 text-gray-700 rounded-full hover:bg-primary-600 hover:text-white transition-colors"
               >
-                Over $100
+                {t('shop.over100')}
               </button>
             </div>
           </div>

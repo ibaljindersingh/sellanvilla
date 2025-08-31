@@ -1,0 +1,82 @@
+export interface Product {
+  slug: string;
+  name: string;
+  category: string;
+  price: number;
+  sizes: string[];
+  description: string;
+  images: string[];
+}
+
+export const products: Product[] = [
+  {
+    slug: "velvet-night-gown",
+    name: "Velvet Night Gown",
+    category: "Nightwear",
+    price: 49.99,
+    sizes: ["S", "M", "L"],
+    description: "Soft velvet night gown designed for comfort and elegance.",
+    images: [
+      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      "https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+    ]
+  },
+  {
+    slug: "cotton-maternity-set",
+    name: "Cotton Maternity Set",
+    category: "Maternity",
+    price: 59.95,
+    sizes: ["M", "L", "XL"],
+    description: "Breathable cotton maternity nightwear set with adjustable waist.",
+    images: [
+      "https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      "https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
+    ]
+  },
+  {
+    slug: "pashmina-shawl",
+    name: "Pashmina Shawl",
+    category: "Shawls",
+    price: 79.5,
+    sizes: ["One Size"],
+    description: "Luxurious hand‑woven pashmina shawl to elevate any ensemble.",
+    images: [
+      "https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+    ]
+  },
+  {
+    slug: "floral-salwaar-suit",
+    name: "Floral Salwaar Suit",
+    category: "Salwaar Suits",
+    price: 89.0,
+    sizes: ["M", "L", "XL"],
+    description: "Elegant Indian salwaar suit featuring intricate floral embroidery.",
+    images: [
+      "https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
+      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+    ]
+  },
+  {
+    slug: "pearl-necklace-set",
+    name: "Pearl Necklace Set",
+    category: "Jewellery",
+    price: 35.25,
+    sizes: ["One Size"],
+    description: "Classic pearl necklace with matching stud earrings.",
+    images: [
+      "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+    ]
+  },
+  {
+    slug: "gold-tone-earrings",
+    name: "Gold Tone Earrings",
+    category: "Jewellery",
+    price: 22.75,
+    sizes: ["One Size"],
+    description: "Stylish gold‑tone earrings to complement any outfit.",
+    images: [
+      "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+    ]
+  }
+];
+
