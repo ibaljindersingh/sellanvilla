@@ -1,0 +1,53 @@
+[
+  {
+    "slug": "maternity-nightwear-set",
+    "title": "Maternity Nightwear Set",
+    "category": "Maternity",
+    "price": 39,
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "images": [
+      "/p/maternity-1.jpg",
+      "/p/maternity-2.jpg"
+    ],
+    "tag": "New",
+    "description": "Soft cotton maternity nightwear set with easy nursing access."
+  },
+  {
+    "slug": "satin-night-suit",
+    "title": "Satin Night Suit",
+    "category": "Nightwear",
+    "price": 32,
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "images": [
+      "/p/satin-1.jpg"
+    ],
+    "tag": "Trending",
+    "description": "Smooth satin two\u2011piece with relaxed fit and breathable lining."
+  },
+  {
+    "slug": "pure-pashmina-shawl",
+    "title": "Pure Pashmina Shawl",
+    "category": "Shawls",
+    "price": 99,
+    "sizes": [
+      "One size"
+    ],
+    "images": [
+      "/p/pashmina-1.jpg",
+      "/p/pashmina-2.jpg"
+    ],
+    "tag": "Limited",
+    "description": "Hand\u2011finished pure pashmina with classic drape and warmth."
+  }
+]
